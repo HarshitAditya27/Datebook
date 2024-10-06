@@ -11,7 +11,7 @@ function Header() {
     <nav className="mx-auto py-2 px-4 flex justify-between items-center shadow-md border-b-2">
       <Link href={"/"} className="flex items-center">
         <Image
-          src="/logo.png"
+          src="/Datebook.png"
           width="150"
           height="60"
           alt="logo"
