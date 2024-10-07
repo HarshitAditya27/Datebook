@@ -34,7 +34,7 @@ const testimonials = [
     name: "Urahara Kisuke",
     role: "Senior Staff engineer",
     content:
-      "I've seen a 30% increase in my meeting bookings since using Datebook. It's a game-changer for sales professionals.",
+      "Since I started using Datebook, I've experienced a 30% increase in my meeting bookings. It’s a game-changer for full stack developers like me, making client interactions much more efficient.",
     image:
       "https://upload.wikimedia.org/wikipedia/tr/6/64/Kisuke_Urahara_Anime.jpg",
   },
