@@ -4,6 +4,20 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { notFound } from "next/navigation";
 import React from "react";
 
+export async function generateMetadata({ params }) {
+  const user = await getUserByUsername(params.username);
+  if (!user) {
+    return {
+      title: "User Not Found",
+    };
+  }
+
+  return {
+    title: `${user.name}'s Profile | Datebook`,
+    description: `Book an event with ${user.name}. View available public events and schedules`,
+  };
+}
+
 async function UserPage({ params }) {
   const user = await getUserByUsername(params.username);
   if (!user) {
