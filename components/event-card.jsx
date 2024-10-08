@@ -16,6 +16,7 @@ import useFetch from "@/hooks/use-fetch";
 import { deleteEvent } from "@/actions/events";
 
 function EventCard({ event, username, isPublic = false }) {
+  console.log("event: ", event);
   const [isCopied, setIsCopied] = useState(false);
   const router = useRouter();
 
@@ -52,7 +53,7 @@ function EventCard({ event, username, isPublic = false }) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p>{event.description.substring(0, event.description.indexOf("."))}</p>
+        <p>{event.description.substring(0, event.description.indexOf("."))}.</p>
       </CardContent>
       {!isPublic && (
         <CardFooter className="flex gap-2">
