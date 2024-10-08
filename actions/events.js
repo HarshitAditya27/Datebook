@@ -2,6 +2,7 @@
 import { db } from "@/lib/prisma";
 import { eventSchema } from "@/lib/validators";
 import { auth } from "@clerk/nextjs/server";
+import { addDays, format, startOfDay } from "date-fns";
 
 export async function createEvent(data) {
   const { userId } = auth();
@@ -99,4 +100,61 @@ export async function getEventDetails(username, eventId) {
     },
   });
   return event;
+}
+
+export async function getEventAvailability(eventId) {
+  const event = await db.event.findUnique({
+    where: {
+      id: eventId,
+    },
+    include: {
+      user: {
+        include: {
+          availability: {
+            select: {
+              days: true,
+              timeGap: true,
+            },
+          },
+          bookings: {
+            select: {
+              startTime: true,
+              endTime: true,
+            },
+          },
+        },
+      },
+    },
+  });
+  if (!event || !event.user.availability) {
+    return [];
+  }
+  const { availability, bookings } = event.user;
+
+  const startDate = startOfDay(new Date());
+  const endDate = addDays(startDate, 30);
+
+  const availableDates = [];
+
+  for (let date = startDate; date <= endDate; date = addDays(date, 1)) {
+    const dayOfWeek = format(date, "EEEE").toUpperCase();
+    const dayAvailability = availability.days.find((d) => d.day === dayOfWeek);
+
+    if (dayAvailability) {
+      const dateStr = format(date, "yyyy-MM-dd");
+      const slots = generateAvailableSlots(
+        dayAvailability.startTime,
+        dayAvailability.endTime,
+        event.duration,
+        bookings,
+        dateStr,
+        availability.timeGap
+      );
+      availableDates.push({
+        date: dateStr,
+        slots,
+      });
+    }
+  }
+  return availableDates;
 }
