@@ -1,4 +1,4 @@
-import { getEventDetails } from "@/actions/events";
+import { getEventAvailability, getEventDetails } from "@/actions/events";
 import { getUserByUsername } from "@/actions/users";
 import EventCard from "@/components/event-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -10,6 +10,7 @@ import BookingForm from "./_components/booking-form";
 
 export async function generateMetadata({ params }) {
   const event = await getEventDetails(params.username, params.eventId);
+
   if (!event) {
     return {
       title: "Event Not Found",
@@ -24,15 +25,18 @@ export async function generateMetadata({ params }) {
 
 async function EventPage({ params }) {
   const event = await getEventDetails(params.username, params.eventId);
+  const availability = await getEventAvailability(params.eventId);
+  console.log(availability);
   if (!event) {
-    notFound();
+    not;
+    Found();
   }
 
   return (
     <div className="flex flex-col justify-center lg:flex-row px-4 py-8">
       <EventDetails event={event} />
       <Suspense fallback={<div>Loading booking form...</div>}>
-        <BookingForm />
+        <BookingForm event={event} availability={availability} />
       </Suspense>
     </div>
   );
