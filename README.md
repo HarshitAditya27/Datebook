@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align='center'><img src='' width="250" ></p>
+<h1 align='center'> Datebook</h1> 
+<p align='center'> <a href="https://datebook-phi.vercel.app/">Deployed Link </a> | <a href="">Demo Link</a> </p>
 
-## Getting Started
 
-First, run the development server:
+## Introduction 🐱‍💻
+- Datebook is a scheduling app that lets users **create** events and **schedule** meetings directly using the <a href="https://developers.google.com/calendar/api/guides/overview">**Google Calendar API**</a>. It offers a simple interface to streamline event management and time planning for both personal and professional needs.
+- Datebook allows users to effortlessly schedule, update, and delete meetings and events across multiple time slots. It features dedicated pages for each event, enabling users to manage meetings seamlessly. Additionally, individual user pages showcase their public events, making it easy to share and organize schedules.
+- Datebook allows users to **schedule**, **update**, and **delete** meetings, offering customizable time slots and durations for events. With dedicated pages for both events and user profiles showcasing public events, Datebook simplifies scheduling and event management.
+- Our app uses <a href="https://clerk.com/">**Clerk**</a> for user authentication and <a href="https://www.prisma.io/">**Prisma**</a> and <a href="https://neon.tech/">**NeonDB**</a> for database operations.
+## Tech Stack used 👨‍💻
 
-```bash
+- **HTML**
+- **TailwindCSS** 
+- **JavaScript** 
+- **NeonDB**
+- **React** 
+- **Next.js**
+
+## Features 🧰
+- User **authentication** 🔒.
+- **Create** and **delete** events and meetings 👨‍💻.
+- **Seperate profile page** for each users 👤.
+- **Change** username of a user 👥.
+- **Edit** time slots and availability ⌚⌚.
+- **Direct** meetings set up in Google Calendar of a user 🗓️.
+- **Updates** about upcoming meetings in the dashboard 📃.
+
+## Learnings 📝
+  
+- Learned how to integrate **NeonDB** and **Prisma** in the project.   
+- Learned how to use **Google Calendar API** and **Cleark API** together to create seamless authentication for our application and its integration with the Google Calendar app. 
+  
+## Installation 🛠️
+  **Step 1**: Fork the repository. You can fork the repository by clicking on the fork button on the right-hand side below the profile.<br> 
+
+  **Step 2**: Clone your forked repository. Replace **yourusername** with your GitHub Username. 
+  
+  ```
+[git clone "https://github.com/HarshitAditya27/Nexus.git"](https://github.com/HarshitAditya27/Datebook.git)
+``` 
+  **Step 3** : Go to the project folder and run npm i. It will install all the packages and dependencies used in the project. 
+  
+  ```
+npm i
+``` 
+  **Step 4** : Run npm run dev. This will start the project in your local machine 🖥️.  
+  
+  ```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+``` 
+Hurray 🥳, you successfully deployed the project in your local machine 🎉.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🚨But the app won't work because it will require **API keys** from various tools which are mentioned in **Setup .env file** section.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🚨<i>We won't be able to login in to the deployed version of our application because we haven't published our Google Calendar API for production as for production and public use a strict verification process is done so for the working of the project **please look into youtube demo**.</i>.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+ ### Setup .env file
 
-## Learn More
+```js
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+CLERK_SECRET_KEY
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=
+NEXT_PUBLIC_CLERK_SIGN_UP_URL
+DATABASE_URL
+``` 
 
-To learn more about Next.js, take a look at the following resources:
+  ## Screenshots  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  ## Loved the project 💖? 
+  
+  If you found the project intresting then please do give this project a star ⭐. 
+  <br> <br> <br>
+   <p align="center" width="100%">
+   Made with 💖 by Harshit Aditya   
+</p>
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
