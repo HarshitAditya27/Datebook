@@ -44,7 +44,7 @@ function AvailabilityForm({ initialData }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {["monday", "tuesday", "wednesday", "thusday", "friday"].map((day) => {
+      {["monday", "tuesday", "wednesday", "thursday", "friday"].map((day) => {
         const isAvailable = watch(`${day}.isAvailable`);
 
         return (

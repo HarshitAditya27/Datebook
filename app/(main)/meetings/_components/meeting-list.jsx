@@ -25,7 +25,7 @@ function MeetingList({ meetings, type }) {
               <CardTitle>{meeting.event.title}</CardTitle>
               <CardDescription>with {meeting.name}</CardDescription>
               <CardDescription>
-                &quot; {meeting.additionalInfo}&quot;
+                &quot;{meeting.additionalInfo}&quot;
               </CardDescription>
             </CardHeader>
             <CardContent>

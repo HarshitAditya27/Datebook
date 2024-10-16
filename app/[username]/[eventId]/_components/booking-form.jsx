@@ -152,7 +152,7 @@ function BookingForm({ event, availability }) {
             <Input
               {...register("email")}
               type="email"
-              placeholder="Your Name"
+              placeholder="Your email"
             />
             {errors.email && (
               <p className="text-red-500 text-sm">{errors.email.message}</p>
