@@ -18,7 +18,7 @@ import useFetch from "@/hooks/use-fetch";
 import { updateAvailability } from "@/actions/availability";
 
 function AvailabilityForm({ initialData }) {
-  console.log(initialData);
+  //console.log(initialData);
 
   const {
     register,

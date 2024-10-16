@@ -16,7 +16,7 @@ import useFetch from "@/hooks/use-fetch";
 import { deleteEvent } from "@/actions/events";
 
 function EventCard({ event, username, isPublic = false }) {
-  console.log("event: ", event);
+  //console.log("event: ", event);
   const [isCopied, setIsCopied] = useState(false);
   const router = useRouter();
 

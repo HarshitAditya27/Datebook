@@ -49,7 +49,7 @@ function BookingForm({ event, availability }) {
   const { loading, data, fn: fnCreateBooking } = useFetch(createBooking);
 
   async function onSubmit(data) {
-    console.log(data);
+    //console.log(data);
     if (!selectedDate || !selectedTime) {
       console.error("Date or time not selected");
       return;

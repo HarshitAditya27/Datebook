@@ -38,7 +38,10 @@ function CreateEventDrawer() {
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Create New Event</DrawerTitle>
-          <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+          <DrawerDescription>
+            Make sure to give a full stop (.), in order to display the
+            description in events and meeting menu.
+          </DrawerDescription>
         </DrawerHeader>
 
         <EventForm

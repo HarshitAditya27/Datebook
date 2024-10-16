@@ -4,8 +4,9 @@ import { auth } from "@clerk/nextjs/server";
 
 export async function getUserAvailability() {
   const { userId } = auth();
+
   if (!userId) {
-    throw new Error("unauthorized");
+    throw new Error("Unauthorized");
   }
 
   const user = await db.user.findUnique({
@@ -21,9 +22,9 @@ export async function getUserAvailability() {
     return null;
   }
 
-  const availabilityData = {
-    timeGap: user.availability.timeGap,
-  };
+  // Transform the availability data into the format expected by the form
+  const availabilityData = { timeGap: user.availability.timeGap };
+
   [
     "monday",
     "tuesday",
@@ -36,6 +37,7 @@ export async function getUserAvailability() {
     const dayAvailability = user.availability.days.find(
       (d) => d.day === day.toUpperCase()
     );
+
     availabilityData[day] = {
       isAvailable: !!dayAvailability,
       startTime: dayAvailability
@@ -46,13 +48,14 @@ export async function getUserAvailability() {
         : "17:00",
     };
   });
+
   return availabilityData;
 }
-
 export async function updateAvailability(data) {
   const { userId } = auth();
+
   if (!userId) {
-    throw new Error("unauthorized");
+    throw new Error("Unauthorized");
   }
 
   const user = await db.user.findUnique({
@@ -67,7 +70,8 @@ export async function updateAvailability(data) {
   const availabilityData = Object.entries(data).flatMap(
     ([day, { isAvailable, startTime, endTime }]) => {
       if (isAvailable) {
-        const baseDate = new Date().toISOString().split("T")[0];
+        const baseDate = new Date().toISOString().split("T")[0]; // Get current date in YYYY-MM-DD format
+
         return [
           {
             day: day.toUpperCase(),
@@ -79,6 +83,7 @@ export async function updateAvailability(data) {
       return [];
     }
   );
+
   if (user.availability) {
     await db.availability.update({
       where: { id: user.availability.id },
@@ -93,7 +98,7 @@ export async function updateAvailability(data) {
   } else {
     await db.availability.create({
       data: {
-        user: user.id,
+        userId: user.id,
         timeGap: data.timeGap,
         days: {
           create: availabilityData,
@@ -101,5 +106,6 @@ export async function updateAvailability(data) {
       },
     });
   }
+
   return { success: true };
 }

@@ -6,7 +6,7 @@ import AvailabilityForm from "./_components/availability-form";
 
 async function AvailabilityPage() {
   const availability = await getUserAvailability();
-  console.log(availability);
+  //console.log(availability);
   return <AvailabilityForm initialData={availability || defaultAvailability} />;
 }
 

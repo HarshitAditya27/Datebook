@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
 async function EventPage({ params }) {
   const event = await getEventDetails(params.username, params.eventId);
   const availability = await getEventAvailability(params.eventId);
-  console.log(availability);
+  //console.log(availability);
   if (!event) {
     not;
     Found();
