@@ -91,6 +91,3 @@ DATABASE_URL
    <p align="center" width="100%">
    Made with 💖 by Harshit Aditya   
 </p>
-
-
-
